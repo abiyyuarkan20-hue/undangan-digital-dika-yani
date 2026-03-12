@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <title>The Wedding of Dika & Yani</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body style="overflow: hidden">
+    <div id="overlay">
+      <img
+        src="images/gunungan2.png"
+        class="wayang wayang-left"
+        alt="Wayang Left"
+      />
+
+      <img
+        src="images/gunungan2.png"
+        class="wayang wayang-right"
+        alt="Wayang Right"
+      />
+      <div class="overlay-content" data-aos="zoom-in">
+        <h3>Kepada Bapak/Ibu/Saudara/i</h3>
+        <h2 id="guestName">Tamu Undangan</h2>
+        <p>Kami Mengundang Anda Ke Pernikahan</p>
+        <h1>Dika & Yani</h1>
+        <button class="btn-open" onclick="openInvitation()">
+          Buka Undangan
+        </button>
+      </div>
+    </div>
+
+    <audio id="bgMusic" loop>
+      <source src="bg_music/bg1.mp3" type="audio/mpeg" />
+    </audio>
+
+    <div id="musicControl" class="music-btn" onclick="toggleMusic()">
+      <span id="musicIcon">🎵</span>
+    </div>
+
+    <section class="hero">
+      <img
+        src="https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_1280.png"
+        class="ornament top-left"
+      />
+      <img
+        src="https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_1280.png"
+        class="ornament bottom-right"
+      />
+
+      <div class="content" data-aos="fade-up">
+        <p style="letter-spacing: 5px">THE WEDDING OF</p>
+        <h1>Dika & Yani</h1>
+        <p class="date-text">04 APRIL 2026</p>
+
+        <div id="timer">
+          <div class="t-box">
+            <span id="days">00</span>
+            <p>Hari</p>
+          </div>
+          <div class="t-box">
+            <span id="hours">00</span>
+            <p>Jam</p>
+          </div>
+          <div class="t-box">
+            <span id="mins">00</span>
+            <p>Menit</p>
+          </div>
+          <div class="t-box">
+            <span id="secs">00</span>
+            <p>Detik</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="couple" data-aos="fade-up">
+      <div class="container">
+        <p class="arab">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+        <p class="intro">
+          Assalamu’alaikum Warahmatullahi Wabarakatuh. Dengan memohon rahmat dan
+          ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i ke
+          acara pernikahan kami:
+        </p>
+
+        <div class="couple-flex">
+          <div class="bride-groom" data-aos="fade-right">
+            <div class="frame">
+              <img src="images/1 (9).jpeg" alt="Bride" />
+            </div>
+            <h3>Yani</h3>
+            <p>Putri bungsu dari Bapak Hartono & Ibu Endang</p>
+            <a href="https://instagram.com" class="ig-link">@viarahma</a>
+          </div>
+
+          <div class="ampersand">&</div>
+
+          <div class="bride-groom" data-aos="fade-left">
+            <div class="frame">
+              <img src="images/1 (6).jpeg" alt="Groom" />
+            </div>
+            <h3>Dika</h3>
+            <p>Putra pertama dari Bapak Wijaya & Ibu Siti</p>
+            <a href="https://instagram.com" class="ig-link">@raka_pratama</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" data-aos="fade-up">
+      <h2>Our Love Story</h2>
+      <div class="timeline">
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="t-date">Januari 2022</div>
+          <div class="t-content">
+            <h4>Pertemuan Pertama</h4>
+            <p>
+              Berawal dari pertemuan tidak sengaja di sebuah perpustakaan
+              kota...
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="t-date">Maret 2024</div>
+          <div class="t-content">
+            <h4>Lamaran</h4>
+            <p>Mengikat janji suci di hadapan keluarga besar...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="event" data-aos="fade-up">
+      <div class="event-card">
+        <div class="event-item">
+          <h2>Akad Nikah</h2>
+          <p class="time">08.00 - 10.00 WIB</p>
+          <p class="location">
+            Masjid Agung Al-Barkah<br />Jl. Veteran No. 1, Bekasi
+          </p>
+        </div>
+        <hr />
+        <div class="event-item">
+          <h2>Resepsi</h2>
+          <p class="time">11.00 - 13.00 WIB</p>
+          <p class="location">Grand Ballroom Hotel Aston<br />Bekasi</p>
+        </div>
+        <a href="https://maps.google.com" target="_blank" class="btn-map"
+          >Buka Google Maps</a
+        >
+      </div>
+    </section>
+
+    <section class="gallery">
+      <div class="container">
+        <h2 data-aos="fade-up">Galeri Momen Bahagia</h2>
+        <p data-aos="fade-up" data-aos-delay="200">
+          Setiap detik yang kami lalui adalah anugerah terindah.
+        </p>
+
+        <div class="swiper mySwiper" data-aos="zoom-in-up" data-aos-delay="400">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img src="images/wedding1.jpeg" alt="Moment 1" />
+                <div class="gallery-overlay">
+                  <span>Magnificent Love</span>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img src="images/wedding2.jpeg" alt="Moment 2" />
+                <div class="gallery-overlay">
+                  <span>Eternal Soul</span>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img src="images/wedding3.jpeg" alt="Moment 3" />
+                <div class="gallery-overlay">
+                  <span>Pure Happiness</span>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img src="images/wedding4.jpeg" alt="Moment 2" />
+                <div class="gallery-overlay">
+                  <span>Eternal Soul</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img src="images/wedding5.jpeg" alt="Moment 2" />
+                <div class="gallery-overlay">
+                  <span>Eternal Soul</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <img src="images/wedding6.jpeg" alt="Moment 2" />
+                <div class="gallery-overlay">
+                  <span>Eternal Soul</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="couple-gallery">
+      <div class="container">
+        <h2 data-aos="fade-up">Potret Cinta Kami</h2>
+        <p data-aos="fade-up" data-aos-delay="100">
+          "Menua bersama adalah perjalanan terindah yang ingin aku lalui
+          bersamamu."
+        </p>
+
+        <div class="grid-gallery">
+          <div
+            class="grid-item item-1"
+            data-aos="fade-up"
+            data-aos-duration="1200"
+            data-aos-delay="100"
+          >
+            <img src="images/grid1.jpeg" alt="Prewedding 1" />
+            <div class="item-overlay"><span>Endless Love</span></div>
+          </div>
+
+          <div
+            class="grid-item item-2"
+            data-aos="fade-up"
+            data-aos-duration="1200"
+            data-aos-delay="200"
+          >
+            <img src="images/grid2.jpeg" alt="Prewedding 2" />
+            <div class="item-overlay"><span>Soulmate</span></div>
+          </div>
+
+          <div
+            class="grid-item item-3"
+            data-aos="fade-up"
+            data-aos-duration="1200"
+            data-aos-delay="300"
+          >
+            <img src="images/grid3.jpeg" alt="Prewedding 3" />
+            <div class="item-overlay"><span>Destiny</span></div>
+          </div>
+
+          <div
+            class="grid-item item-4"
+            data-aos="fade-up"
+            data-aos-duration="1200"
+            data-aos-delay="400"
+          >
+            <img src="images/grid4.jpeg" alt="Prewedding 4" />
+            <div class="item-overlay"><span>Together</span></div>
+          </div>
+
+          <div
+            class="grid-item item-5"
+            data-aos="fade-up"
+            data-aos-duration="1200"
+            data-aos-delay="500"
+          >
+            <img src="images/grid5.jpeg" alt="Prewedding 5" />
+            <div class="item-overlay"><span>Forever</span></div>
+          </div>
+
+          <div
+            class="grid-item item-6"
+            data-aos="fade-up"
+            data-aos-duration="1200"
+            data-aos-delay="600"
+          >
+            <img src="images/grid6.jpeg" alt="Prewedding 6" />
+            <div class="item-overlay"><span>Always</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gift">
+      <h2 data-aos="fade-up">Kado Digital</h2>
+      <div class="gift-container">
+        <div class="atm-card card-bca" data-aos="flip-left">
+          <div class="card-inner">
+            <div class="card-top">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg"
+                alt="BCA"
+                class="bank-logo"
+              />
+              <span class="card-type">DEBIT</span>
+            </div>
+            <div class="chip"></div>
+            <p id="rek1" class="rek-num">1234 5678 90</p>
+            <div class="card-bottom">
+              <div class="card-holder">
+                <span>CARD HOLDER</span>
+                <p>DIKA</p>
+              </div>
+              <button class="copy-btn-atm" onclick="copyText('rek1')">
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="atm-card card-mandiri" data-aos="flip-right">
+          <div class="card-inner">
+            <div class="card-top">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg"
+                alt="Mandiri"
+                class="bank-logo"
+              />
+              <span class="card-type">DEBIT</span>
+            </div>
+            <div class="chip"></div>
+            <p id="rek2" class="rek-num">0987 6543 21</p>
+            <div class="card-bottom">
+              <div class="card-holder">
+                <span>CARD HOLDER</span>
+                <p>YANI</p>
+              </div>
+              <button class="copy-btn-atm" onclick="copyText('rek2')">
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="outro" data-aos="fade-up">
+      <p>
+        Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i
+        berkenan hadir dan memberikan doa restu kepada kedua mempelai.
+      </p>
+      <h2>Dika & Yani</h2>
+      <p class="thank-you">Terima Kasih</p>
+    </section>
+
+    <section class="rsvp" data-aos="fade-up">
+      <div class="container">
+        <h2>Konfirmasi Kehadiran & Ucapan</h2>
+        <form id="rsvpForm">
+          <input type="text" id="name" placeholder="Nama Lengkap" required />
+          <select id="attendance">
+            <option value="Hadir">Hadir</option>
+            <option value="Tidak Hadir">Tidak Hadir</option>
+          </select>
+          <textarea
+            id="message"
+            rows="4"
+            placeholder="Ucapan & Doa Restu"
+            required
+          ></textarea>
+
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-direction: column;
+              margin-top: 10px;
+            "
+          >
+            <button
+              type="button"
+              id="btnDisplayOnly"
+              class="btn-send"
+              style="background: var(--gold)"
+            >
+              Tinggalkan Pesan di Web
+            </button>
+
+            <button type="submit" id="btnWhatsApp" class="btn-send">
+              Kirim via WhatsApp
+            </button>
+          </div>
+        </form>
+
+        <div id="guestMessages" class="messages-container"></div>
+      </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-database-compat.js"></script>
+
+    <script src="script/script.js"></script>
+  </body>
+</html>
