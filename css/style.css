@@ -1254,6 +1254,16 @@ textarea {
   overflow: hidden; /* Pastikan partikel tidak bocor keluar */
 }
 
+.premium-gallery h2 {
+  text-align: center;
+  margin-bottom: 0.6rem;
+}
+
+.premium-gallery p {
+  text-align: center;
+  margin-bottom: 1.4rem;
+}
+
 /* Bentuk Kelopak Bunga */
 .sakura-petal {
   position: absolute;
