@@ -562,35 +562,35 @@ function addToCalendar() {
 // 12. Generasi Kelopak Sakura Berguguran
 // ==========================================
 function createSakuraPetals() {
+  // Pastikan class ini ada di HTML Anda
   const section = document.querySelector(".premium-gallery");
-  if (!section) return;
+  if (!section) {
+    console.warn(
+      "Target .premium-gallery tidak ditemukan. Partikel sakura dibatalkan.",
+    );
+    return;
+  }
 
-  const petalCount = 35; // Jumlah kelopak yang berjatuhan bersamaan
-
+  const petalCount = 35;
   for (let i = 0; i < petalCount; i++) {
     const petal = document.createElement("div");
     petal.className = "sakura-petal";
 
-    // Ukuran kelopak acak (antara 8px sampai 15px)
     const size = Math.random() * 7 + 8 + "px";
     petal.style.width = size;
     petal.style.height = size;
-
-    // Posisi awal horizontal acak (dari kiri ke kanan layar)
     petal.style.left = Math.random() * 100 + "%";
 
-    // Durasi jatuh acak (10 - 20 detik agar terasa lambat dan romantis)
     const duration = Math.random() * 10 + 10 + "s";
+    const delay = Math.random() * 15 + "s";
 
-    // Terapkan animasi CSS (Ini akan memanggil @keyframes fallSakura)
     petal.style.animation = `fallSakura ${duration} linear infinite`;
-
-    // Jeda waktu mulai yang acak agar jatuhnya tidak bersamaan seperti hujan badai
-    petal.style.animationDelay = Math.random() * 15 + "s";
-
-    // Rotasi awal acak agar posisi kelopaknya natural
+    petal.style.animationDelay = delay;
     petal.style.transform = `rotate(${Math.random() * 360}deg)`;
 
     section.appendChild(petal);
   }
 }
+
+// Panggil fungsi setelah DOM siap
+document.addEventListener("DOMContentLoaded", createSakuraPetals);
