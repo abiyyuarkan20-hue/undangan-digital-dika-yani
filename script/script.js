@@ -15,6 +15,74 @@ if (guest) {
 }
 
 // ==========================================
+// Fitur Sapaan Tamu Dinamis & Typewriter
+// ==========================================
+function typeWriter(element, text, speed) {
+  let i = 0;
+  element.innerText = ""; // Memastikan teks kosong
+  element.classList.add("typing-cursor"); // Munculkan kursor
+
+  function typing() {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    } else {
+      // Setelah selesai, biarkan kursor berkedip 2 detik lalu hilangkan
+      setTimeout(() => {
+        element.classList.remove("typing-cursor");
+      }, 2000);
+    }
+  }
+  typing();
+}
+
+function setGuestName() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const guest = urlParams.get("to");
+  const overlayName = document.getElementById("guestName");
+  const coverName = document.getElementById("guest-name");
+
+  if (guest) {
+    const formattedName = decodeURIComponent(guest).replace(/\+/g, " ");
+
+    // 1. Kosongkan teks segera agar tidak terlihat teks defaultnya
+    if (overlayName) {
+      overlayName.innerText = "";
+    }
+
+    // 2. Set nama di cover bawah (langsung saja karena di bawah)
+    if (coverName) {
+      coverName.innerText = formattedName;
+    }
+
+    // 3. Jalankan fungsi ketik setelah animasi AOS Selesai
+    // Kita gunakan delay 1200ms (AOS duration 1000ms + sedikit jeda)
+    setTimeout(() => {
+      if (overlayName) {
+        typeWriter(overlayName, formattedName, 150);
+      }
+    }, 1200);
+  } else {
+    // Jika tidak ada parameter ?to=, tetap jalankan efek ketik untuk "Tamu Undangan"
+    if (overlayName) {
+      overlayName.innerText = "";
+      setTimeout(() => {
+        typeWriter(overlayName, "Tamu Undangan", 150);
+      }, 1200);
+    }
+  }
+}
+
+// Inisialisasi
+document.addEventListener("DOMContentLoaded", () => {
+  AOS.init({
+    duration: 1000,
+    once: true,
+  });
+  setGuestName();
+});
+// ==========================================
 // 3. Kontrol Buka Undangan & Partikel
 // ==========================================
 function createParticles() {
@@ -67,7 +135,9 @@ function openInvitation() {
       setTimeout(() => {
         overlay.style.display = "none";
         document.body.style.overflow = "auto";
-        AOS.refresh();
+
+        // PANGGIL AOS DI SINI SAAT SCROLL SUDAH AKTIF
+        AOS.init({ duration: 1000, once: true });
       }, 1000);
     }
   }, 1200);
@@ -334,4 +404,193 @@ if (btnDisplayOnly) {
     showToast("Pesan berhasil ditambahkan ke buku tamu!", "success");
     if (form) form.reset();
   });
+}
+
+// ==========================================
+// 10. Fitur Lightbox (Zoom Galeri Foto)
+// ==========================================
+function openLightbox(element) {
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const clickedImg = element.querySelector("img"); // Mengambil gambar yang diklik
+
+  lightbox.style.display = "block"; // Tampilkan elemen
+
+  // Beri sedikit jeda agar animasi transisi CSS terlihat
+  setTimeout(() => {
+    lightbox.classList.add("show");
+  }, 10);
+
+  // Ubah sumber gambar pada pop-up sesuai gambar yang diklik
+  lightboxImg.src = clickedImg.src;
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById("lightbox");
+  lightbox.classList.remove("show"); // Hilangkan dengan animasi
+
+  // Sembunyikan elemen setelah animasi selesai
+  setTimeout(() => {
+    lightbox.style.display = "none";
+  }, 300);
+}
+/* ========================================== */
+/* FUNGSI KARTU GOSOK (SCRATCH CARD)          */
+/* ========================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.getElementById("scratch-canvas");
+  if (!canvas) return; // Jika tidak ada fitur kartu gosok, abaikan
+
+  const ctx = canvas.getContext("2d");
+  const container = document.querySelector(".scratch-container");
+
+  // Sesuaikan resolusi canvas dengan ukuran aslinya
+  canvas.width = container.offsetWidth;
+  canvas.height = container.offsetHeight;
+
+  // 1. Buat Layer Emas Penutup
+  ctx.fillStyle = "#b08d57"; // Menggunakan warna var(--gold)
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // 2. Tambahkan Teks Petunjuk di tengah layer
+  ctx.font = "bold 22px Montserrat";
+  ctx.fillStyle = "#ffffff";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("GOSOK DI SINI", canvas.width / 2, canvas.height / 2);
+
+  let isDrawing = false;
+
+  // Dapatkan posisi kursor / jari yang akurat
+  function getCoordinates(event) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+    const clientY = event.touches ? event.touches[0].clientY : event.clientY;
+    return {
+      x: clientX - rect.left,
+      y: clientY - rect.top,
+    };
+  }
+
+  // Fungsi saat digosok
+  function scratch(event) {
+    if (!isDrawing) return;
+    event.preventDefault(); // Cegah layar HP ikut nge-scroll saat menggosok
+
+    const { x, y } = getCoordinates(event);
+
+    // Composite operation 'destination-out' bertindak sebagai "Penghapus"
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.beginPath();
+    ctx.arc(x, y, 35, 0, Math.PI * 2); // Angka 35 adalah ukuran lebar penghapus
+    ctx.fill();
+
+    checkScratchProgress();
+  }
+
+  // --- EVENT UNTUK LAPTOP (MOUSE) ---
+  canvas.addEventListener("mousedown", (e) => {
+    isDrawing = true;
+    scratch(e);
+  });
+  canvas.addEventListener("mousemove", scratch);
+  canvas.addEventListener("mouseup", () => (isDrawing = false));
+  canvas.addEventListener("mouseleave", () => (isDrawing = false));
+
+  // --- EVENT UNTUK HP (TOUCHSCREEN) ---
+  canvas.addEventListener(
+    "touchstart",
+    (e) => {
+      isDrawing = true;
+      scratch(e);
+    },
+    { passive: false },
+  );
+  canvas.addEventListener("touchmove", scratch, { passive: false });
+  canvas.addEventListener("touchend", () => (isDrawing = false));
+
+  // Cek progres gosokan, buka otomatis jika sudah setengah jalan
+  function checkScratchProgress() {
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const pixels = imageData.data;
+    let transparentPixels = 0;
+
+    // Menghitung pixel yang terhapus
+    for (let i = 0; i < pixels.length; i += 4) {
+      if (pixels[i + 3] < 128) {
+        // Cek Alpha Channel
+        transparentPixels++;
+      }
+    }
+
+    const percentage = (transparentPixels / (pixels.length / 4)) * 100;
+
+    // Jika sudah 40% tergosok, buat layer hilang semua
+    if (percentage > 40) {
+      canvas.style.opacity = "0";
+      setTimeout(() => {
+        canvas.style.pointerEvents = "none"; // Agar konten di bawahnya bisa diklik
+      }, 800);
+    }
+  }
+});
+// ==========================================
+// 11. Fitur Simpan ke Kalender (Google Calendar)
+// ==========================================
+function addToCalendar() {
+  // Data Acara (Sudah disesuaikan dengan tanggal 4 April 2026, jam 08:00 - 13:00 WIB)
+  // Format Waktu Google: YYYYMMDDTHHMMSSZ (Z = Zona waktu UTC. WIB adalah UTC+7, jadi 08:00 WIB = 01:00 UTC)
+
+  const eventTitle = encodeURIComponent("Pernikahan Dika & Yani");
+  const details = encodeURIComponent(
+    "Acara pernikahan Dika & Yani. Kehadiran Bapak/Ibu/Saudara/i merupakan suatu kehormatan dan kebahagiaan bagi kami.",
+  );
+  const location = encodeURIComponent(
+    "Masjid Agung Al-Barkah, Jl. Veteran No. 1, Bekasi",
+  );
+
+  const startDate = "20260404T010000Z"; // Mulai Akad (08:00 WIB)
+  const endDate = "20260404T060000Z"; // Selesai Resepsi (13:00 WIB)
+
+  // Buat Link Google Calendar
+  const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${startDate}/${endDate}&details=${details}&location=${location}`;
+
+  // Buka link di tab/aplikasi baru
+  window.open(googleCalendarUrl, "_blank");
+}
+// ==========================================
+// 12. Generasi Kelopak Sakura Berguguran
+// ==========================================
+function createSakuraPetals() {
+  const section = document.querySelector(".premium-gallery");
+  if (!section) return;
+
+  const petalCount = 35; // Jumlah kelopak yang berjatuhan bersamaan
+
+  for (let i = 0; i < petalCount; i++) {
+    const petal = document.createElement("div");
+    petal.className = "sakura-petal";
+
+    // Ukuran kelopak acak (antara 8px sampai 15px)
+    const size = Math.random() * 7 + 8 + "px";
+    petal.style.width = size;
+    petal.style.height = size;
+
+    // Posisi awal horizontal acak (dari kiri ke kanan layar)
+    petal.style.left = Math.random() * 100 + "%";
+
+    // Durasi jatuh acak (10 - 20 detik agar terasa lambat dan romantis)
+    const duration = Math.random() * 10 + 10 + "s";
+
+    // Terapkan animasi CSS (Ini akan memanggil @keyframes fallSakura)
+    petal.style.animation = `fallSakura ${duration} linear infinite`;
+
+    // Jeda waktu mulai yang acak agar jatuhnya tidak bersamaan seperti hujan badai
+    petal.style.animationDelay = Math.random() * 15 + "s";
+
+    // Rotasi awal acak agar posisi kelopaknya natural
+    petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+    section.appendChild(petal);
+  }
 }

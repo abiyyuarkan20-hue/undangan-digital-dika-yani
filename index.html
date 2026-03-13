@@ -35,7 +35,7 @@
         class="wayang wayang-right"
         alt="Wayang Right"
       />
-      <div class="overlay-content" data-aos="zoom-in">
+      <div id="overlayContent" class="overlay-content" data-aos="zoom-in">
         <h3>Kepada Bapak/Ibu/Saudara/i</h3>
         <h2 id="guestName">Tamu Undangan</h2>
         <p>Kami Mengundang Anda Ke Pernikahan</p>
@@ -148,22 +148,62 @@
 
     <section class="event" data-aos="fade-up">
       <div class="event-card">
+        <h2 style="text-align: center; margin-bottom: 30px">Waktu & Tempat</h2>
+
         <div class="event-item">
-          <h2>Akad Nikah</h2>
+          <h3>Akad Nikah</h3>
           <p class="time">08.00 - 10.00 WIB</p>
           <p class="location">
             Masjid Agung Al-Barkah<br />Jl. Veteran No. 1, Bekasi
           </p>
         </div>
+
         <hr />
+
         <div class="event-item">
-          <h2>Resepsi</h2>
+          <h3>Resepsi</h3>
           <p class="time">11.00 - 13.00 WIB</p>
           <p class="location">Grand Ballroom Hotel Aston<br />Bekasi</p>
         </div>
-        <a href="https://maps.google.com" target="_blank" class="btn-map"
-          >Buka Google Maps</a
-        >
+
+        <div style="text-align: center; margin-top: 25px">
+          <button class="btn-calendar" onclick="addToCalendar()">
+            📅 Simpan ke Kalender
+          </button>
+        </div>
+
+        <hr style="margin: 40px 0" />
+
+        <h3 style="text-align: center; margin-bottom: 20px">Peta Lokasi</h3>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.052671991484!2d106.99849541530235!3d-6.236986595484832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698c25797f1f0f%3A0x62ccb9f8ecde4bc4!2sMasjid%20Agung%20Al-Barkah%20Bekasi!5e0!3m2!1sid!2sid!4v1680000000000!5m2!1sid!2sid"
+            width="100%"
+            height="250"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          >
+          </iframe>
+        </div>
+
+        <div class="route-buttons">
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=Masjid+Agung+Al-Barkah+Bekasi"
+            target="_blank"
+            class="btn-route gmaps"
+          >
+            Buka Google Maps
+          </a>
+          <a
+            href="http://maps.apple.com/?q=Masjid+Agung+Al-Barkah+Bekasi"
+            target="_blank"
+            class="btn-route apple-maps"
+          >
+            Buka Apple Maps
+          </a>
+        </div>
       </div>
     </section>
 
@@ -306,6 +346,79 @@
       </div>
     </section>
 
+    <section class="premium-gallery" data-aos="fade-up">
+      <div class="container">
+        <h2>Our Beautiful Moments</h2>
+        <p>Kumpulan memori indah yang kami abadikan bersama.</p>
+
+        <div class="masonry-grid">
+          <div
+            class="masonry-item"
+            data-aos="zoom-in"
+            onclick="openLightbox(this)"
+          >
+            <img src="images/grid1.jpeg" alt="Moment 1" />
+            <div class="hover-text">Perbesar</div>
+          </div>
+
+          <div
+            class="masonry-item"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            onclick="openLightbox(this)"
+          >
+            <img src="images/gambar6.jpeg" alt="Moment 2" />
+            <div class="hover-text">Perbesar</div>
+          </div>
+
+          <div
+            class="masonry-item"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            onclick="openLightbox(this)"
+          >
+            <img src="images/gambar5.jpeg" alt="Moment 3" />
+            <div class="hover-text">Perbesar</div>
+          </div>
+
+          <div
+            class="masonry-item"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            onclick="openLightbox(this)"
+          >
+            <img src="images/gambar4.jpeg" alt="Moment 4" />
+            <div class="hover-text">Perbesar</div>
+          </div>
+
+          <div
+            class="masonry-item"
+            data-aos="zoom-in"
+            data-aos-delay="400"
+            onclick="openLightbox(this)"
+          >
+            <img src="images/gambar3.jpeg" alt="Moment 5" />
+            <div class="hover-text">Perbesar</div>
+          </div>
+
+          <div
+            class="masonry-item"
+            data-aos="zoom-in"
+            data-aos-delay="500"
+            onclick="openLightbox(this)"
+          >
+            <img src="images/gambar2.jpeg" alt="Moment 6" />
+            <div class="hover-text">Perbesar</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+      <span class="close-lightbox">&times;</span>
+      <img class="lightbox-content" id="lightbox-img" alt="Lightbox Image" />
+    </div>
+
     <section class="gift">
       <h2 data-aos="fade-up">Kado Digital</h2>
       <div class="gift-container">
@@ -366,6 +479,25 @@
       </p>
       <h2>Dika & Yani</h2>
       <p class="thank-you">Terima Kasih</p>
+    </section>
+
+    <section class="scratch-section" data-aos="fade-up">
+      <div class="container text-center">
+        <h2>Pesan Rahasia</h2>
+        <p>Gosok layar emas di bawah ini untuk mengungkap kejutan dari kami!</p>
+
+        <div class="scratch-container">
+          <div class="scratch-content">
+            <img src="images/gambar2.jpeg" alt="Kejutan Rahasia" />
+            <div class="secret-text">
+              <h4>Terima Kasih!</h4>
+              <p>Kehadiran Anda adalah kado terindah bagi kami.</p>
+            </div>
+          </div>
+
+          <canvas id="scratch-canvas"></canvas>
+        </div>
+      </div>
     </section>
 
     <section class="rsvp" data-aos="fade-up">

@@ -134,6 +134,38 @@ h2 {
   opacity: 0;
 }
 
+.overlay-content p {
+  margin-bottom: 1rem;
+}
+
+/* 1. Aturan Dasar untuk Nama Tamu */
+#guestName {
+  min-height: 1.2em; /* Menjaga layout tetap stabil saat teks kosong */
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+  border-right: 3px solid transparent; /* Border default transparan */
+  padding-right: 5px;
+}
+
+/* 2. Class ini akan ditambahkan/dihapus oleh JavaScript */
+.typing-cursor {
+  border-right-color: var(--gold) !important; /* Warna kursor saat mengetik */
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+/* 3. Animasi Kursor Berkedip */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--gold);
+  }
+}
+
 .btn-open {
   padding: 12px 30px;
   font-family: "Montserrat", sans-serif;
@@ -357,6 +389,84 @@ h2 {
   color: white;
   text-decoration: none;
   border-radius: 50px;
+}
+
+/* ========================================== */
+/* FITUR KALENDER & NAVIGASI PETA             */
+/* ========================================== */
+.btn-calendar {
+  background: var(--gold);
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-calendar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+}
+
+.map-container {
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+
+.route-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-route {
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 50px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+/* Warna Khas Google Maps */
+.btn-route.gmaps {
+  background: #e8f0fe;
+  color: #1a73e8;
+  border: 1px solid #1a73e8;
+}
+
+.btn-route.gmaps:hover {
+  background: #1a73e8;
+  color: #fff;
+}
+
+/* Warna Khas Apple Maps (Minimalis khas Apple) */
+.btn-route.apple-maps {
+  background: #f5f5f7;
+  color: #1d1d1f;
+  border: 1px solid #d2d2d7;
+}
+
+.btn-route.apple-maps:hover {
+  background: #1d1d1f;
+  color: #fff;
+  border-color: #1d1d1f;
 }
 
 /* --- OUTRO --- */
@@ -788,6 +898,98 @@ h2 {
   border-color: var(--gold);
 }
 
+/* ========================================== */
+/* SCRATCH CARD (KARTU GOSOK)                 */
+/* ========================================== */
+.scratch-section {
+  padding: 80px 20px;
+  background: var(--cream);
+  text-align: center;
+}
+
+.scratch-section h2 {
+  margin-bottom: 10px;
+}
+
+.scratch-section p {
+  color: #888;
+  margin-bottom: 40px;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+.scratch-container {
+  position: relative;
+  width: 320px;
+  height: 450px; /* Ukuran proporsional mirip kartu */
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  border: 4px solid var(--gold);
+  background: #fff;
+}
+
+.scratch-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Gambar yang disembunyikan */
+.scratch-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Teks melayang di atas gambar yang disembunyikan */
+.secret-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 20px 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+  color: white;
+  z-index: 2;
+  text-align: center;
+}
+
+.secret-text h4 {
+  font-family: "Great Vibes", cursive;
+  color: var(--gold);
+  font-size: 2rem;
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+}
+
+.secret-text p {
+  font-size: 0.85rem;
+  font-family: "Montserrat", sans-serif;
+  color: #eee;
+}
+
+/* Layer gosok (emas) di tumpukan paling atas */
+#scratch-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  cursor: crosshair; /* Kursor berubah agar terlihat bisa dihapus */
+  transition: opacity 0.8s ease-out; /* Animasi mulus saat hilang otomatis */
+}
+
 /* --- RSVP --- */
 .rsvp {
   padding: 80px 20px;
@@ -1031,6 +1233,61 @@ textarea {
   border-left: 4px solid #ff3b30;
 }
 
+.sakura-petal {
+  position: absolute;
+  top: -10%;
+  background: linear-gradient(135deg, #ffb7c5, #ff9eaf);
+  border-radius: 0 50% 50% 50%;
+  opacity: 0.8;
+  box-shadow: 0 0 5px rgba(255, 183, 197, 0.4);
+
+  /* --- INI KUNCI AGAR JATUH DI DEPAN FOTO --- */
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ========================================== */
+/* PARTIKEL SAKURA (DI DEPAN FOTO)            */
+/* ========================================== */
+.premium-gallery {
+  position: relative; /* Wadah utama partikel */
+  overflow: hidden; /* Pastikan partikel tidak bocor keluar */
+}
+
+/* Bentuk Kelopak Bunga */
+.sakura-petal {
+  position: absolute;
+  top: -10%;
+  background: linear-gradient(135deg, #ffb7c5, #ff9eaf);
+  border-radius: 0 50% 50% 50%;
+  opacity: 0.8;
+  box-shadow: 0 0 5px rgba(255, 183, 197, 0.4);
+
+  /* KUNCI: Jatuh di depan foto tapi tidak menghalangi klik */
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ANIMASI JATUH SAKURA (Ini yang sebelumnya hilang) */
+@keyframes fallSakura {
+  0% {
+    top: -10%;
+    transform: translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1; /* Muncul perlahan */
+  }
+  80% {
+    opacity: 1; /* Tetap terlihat selama turun */
+  }
+  100% {
+    top: 105%; /* Pastikan jatuh sampai melewati foto paling bawah */
+    transform: translateX(120px) rotate(360deg); /* Melayang tertiup angin ke samping & berputar */
+    opacity: 0; /* Hilang perlahan di ujung bawah */
+  }
+}
+
 /* ========================================================================= */
 /* --- RESPONSIVE MOBILE (MAX-WIDTH: 768px) --- */
 /* ========================================================================= */
@@ -1083,6 +1340,116 @@ textarea {
     grid-column: span 2;
     grid-row: span 1;
   }
+}
+
+/* ========================================== */
+/* GALERI PREMIUM (MASONRY & LIGHTBOX)        */
+/* ========================================== */
+.premium-gallery {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.masonry-grid {
+  column-count: 3;
+  column-gap: 15px;
+  margin-top: 30px;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 15px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Efek Interaktif Hover (Zoom In) */
+.masonry-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
+}
+
+.masonry-item:hover img {
+  transform: scale(1.08);
+  filter: brightness(0.4);
+}
+
+.hover-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  transform: translate(-50%, -30%);
+  opacity: 0;
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+.masonry-item:hover .hover-text {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+/* Desain Lightbox (Pop-up Zoom) */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.show {
+  display: block;
+  opacity: 1;
+}
+
+.lightbox-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.lightbox.show .lightbox-content {
+  transform: scale(1);
+}
+
+.close-lightbox {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 45px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-lightbox:hover {
+  color: #d4af37;
 }
 
 /* ========================================================================= */
@@ -1161,6 +1528,78 @@ textarea {
   .rek-num {
     font-size: 1.1rem;
     letter-spacing: 2px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Animasi Berjalan Tanpa Henti */
+  @keyframes scrollWishes {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Responsif untuk HP */
+  @media (max-width: 768px) {
+    .masonry-grid {
+      column-count: 2; /* Di HP jadi 2 kolom agar tidak terlalu kecil */
+      column-gap: 10px;
+    }
+  }
+
+  /* Desain Lightbox (Pop-up Zoom) */
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    padding-top: 80px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .lightbox.show {
+    display: block;
+    opacity: 1;
+  }
+
+  .lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+  }
+
+  .lightbox.show .lightbox-content {
+    transform: scale(1);
+  }
+
+  .close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 45px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .close-lightbox:hover {
+    color: #d4af37; /* Warna emas saat diarahkan kursor */
   }
 
   .event-card,
