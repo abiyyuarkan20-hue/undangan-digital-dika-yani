@@ -562,35 +562,34 @@ function addToCalendar() {
 // 12. Generasi Kelopak Sakura Berguguran
 // ==========================================
 function createSakuraPetals() {
-  // Pastikan class ini ada di HTML Anda
+  // Gunakan id jika class tidak terbaca, atau pastikan class benar
   const section = document.querySelector(".premium-gallery");
+
   if (!section) {
-    console.warn(
-      "Target .premium-gallery tidak ditemukan. Partikel sakura dibatalkan.",
-    );
+    console.error("Elemen .premium-gallery tidak ditemukan!");
     return;
   }
 
-  const petalCount = 35;
+  const petalCount = 30;
   for (let i = 0; i < petalCount; i++) {
     const petal = document.createElement("div");
     petal.className = "sakura-petal";
 
-    const size = Math.random() * 7 + 8 + "px";
-    petal.style.width = size;
-    petal.style.height = size;
     petal.style.left = Math.random() * 100 + "%";
+    petal.style.width = Math.random() * 10 + 10 + "px";
+    petal.style.height = Math.random() * 10 + 10 + "px";
 
-    const duration = Math.random() * 10 + 10 + "s";
-    const delay = Math.random() * 15 + "s";
+    const duration = Math.random() * 5 + 10 + "s";
+    const delay = Math.random() * 10 + "s";
 
     petal.style.animation = `fallSakura ${duration} linear infinite`;
     petal.style.animationDelay = delay;
-    petal.style.transform = `rotate(${Math.random() * 360}deg)`;
 
     section.appendChild(petal);
   }
 }
 
-// Panggil fungsi setelah DOM siap
-document.addEventListener("DOMContentLoaded", createSakuraPetals);
+// GUNAKAN window.onload agar yakin semua gambar & section sudah dimuat
+window.addEventListener("load", () => {
+  createSakuraPetals();
+});

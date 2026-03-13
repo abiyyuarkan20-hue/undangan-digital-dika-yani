@@ -1346,14 +1346,46 @@ textarea {
 /* GALERI PREMIUM (MASONRY & LIGHTBOX)        */
 /* ========================================== */
 .premium-gallery {
-  padding: 60px 20px;
-  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+  z-index: 1;
+  padding: 50px 0;
 }
 
+/* Sakura Petals Animation */
+.sakura-petal {
+  position: absolute;
+  top: -10%;
+  z-index: 999;
+  pointer-events: none;
+  background: linear-gradient(135deg, #ffb7c5, #ff9eaf);
+  border-radius: 0 50% 50% 50%;
+  animation: fallSakura linear infinite forwards;
+}
+
+@keyframes fallSakura {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Masonry Grid Logic */
 .masonry-grid {
   column-count: 3;
   column-gap: 15px;
-  margin-top: 30px;
+  padding: 0 15px;
 }
 
 .masonry-item {
@@ -1364,73 +1396,64 @@ textarea {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: #eee;
 }
 
-/* Efek Interaktif Hover (Zoom In) */
 .masonry-item img {
   width: 100%;
-  height: auto;
   display: block;
-  transition:
-    transform 0.5s ease,
-    filter 0.5s ease;
+  transition: var(--transition, all 0.5s ease);
 }
 
 .masonry-item:hover img {
-  transform: scale(1.08);
+  transform: scale(1.1);
   filter: brightness(0.4);
 }
 
 .hover-text {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  text-align: center;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
-  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 1px;
-  line-height: 1.5;
-  transform: translate(-50%, -30%);
   opacity: 0;
+  transform: translateY(20px);
   transition: all 0.4s ease;
   pointer-events: none;
 }
 
 .masonry-item:hover .hover-text {
   opacity: 1;
-  transform: translate(-50%, -50%);
+  transform: translateY(0);
 }
 
-/* Desain Lightbox (Pop-up Zoom) */
+/* --- LIGHTBOX (OPTIMIZED) --- */
 .lightbox {
-  display: none;
   position: fixed;
-  z-index: 99999;
-  padding-top: 80px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 100000;
+  display: none; /* Toggle with JS: .style.display = 'flex' */
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .lightbox.show {
-  display: block;
+  display: flex;
   opacity: 1;
 }
 
 .lightbox-content {
-  margin: auto;
-  display: block;
   max-width: 90%;
-  max-height: 80vh;
+  max-height: 85vh;
   border-radius: 8px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  transform: scale(0.8);
-  transition: transform 0.3s ease;
+  transform: scale(0.9);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .lightbox.show .lightbox-content {
@@ -1439,17 +1462,16 @@ textarea {
 
 .close-lightbox {
   position: absolute;
-  top: 20px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 45px;
-  font-weight: bold;
+  top: 30px;
+  right: 30px;
+  color: #fff;
+  font-size: 2.5rem;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .close-lightbox:hover {
-  color: #d4af37;
+  color: var(--gold, #b08d57);
 }
 
 /* ========================================================================= */
