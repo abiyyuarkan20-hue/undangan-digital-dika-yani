@@ -47,7 +47,7 @@
     </div>
 
     <audio id="bgMusic" loop>
-      <source src="bg_music/bg1.mp3" type="audio/mpeg" />
+      <source src="bg_music/ari-laso.mp3" type="audio/mpeg" />
     </audio>
 
     <div id="musicControl" class="music-btn" onclick="toggleMusic()">
@@ -105,7 +105,7 @@
               <img src="images/1 (9).jpeg" alt="Bride" />
             </div>
             <h3>Yani</h3>
-            <p>Putri bungsu dari Bapak Hartono & Ibu Endang</p>
+            <p>Putri dari Bapak Turiyadi (Tutur) & Ibu Leginem (Inem)</p>
             <a href="https://instagram.com" class="ig-link">@viarahma</a>
           </div>
 
@@ -116,7 +116,7 @@
               <img src="images/1 (6).jpeg" alt="Groom" />
             </div>
             <h3>Dika</h3>
-            <p>Putra pertama dari Bapak Wijaya & Ibu Siti</p>
+            <p>Putra dari Bapak Hariadi (Adi) & Ibu Eka Dianawati (Eka)</p>
             <a href="https://instagram.com" class="ig-link">@raka_pratama</a>
           </div>
         </div>
@@ -125,22 +125,53 @@
 
     <section class="story" data-aos="fade-up">
       <h2>Our Love Story</h2>
+
       <div class="timeline">
         <div class="timeline-item" data-aos="fade-up">
           <div class="t-date">Januari 2022</div>
           <div class="t-content">
             <h4>Pertemuan Pertama</h4>
             <p>
-              Berawal dari pertemuan tidak sengaja di sebuah perpustakaan
-              kota...
+              Tidak ada kata yang kebetulan di dunia ini. Semua sudah tersusun
+              dengan sangat rapi oleh Sang Mahakuasa. Kami bertemu pertama
+              kalinya di salah satu store pada tahun 2022.
             </p>
           </div>
         </div>
+
         <div class="timeline-item" data-aos="fade-up">
           <div class="t-date">Maret 2024</div>
           <div class="t-content">
+            <h4>Pendekatan</h4>
+            <p>
+              Seiring berjalannya waktu, kami sering bertemu dan berkomunikasi.
+              Meski tanpa kata pacaran, kami percaya Tuhan menakdirkan kami
+              untuk bersama.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="t-date">22 September 2024</div>
+          <div class="t-content">
             <h4>Lamaran</h4>
-            <p>Mengikat janji suci di hadapan keluarga besar...</p>
+            <p>
+              Atas kehendak Allah SWT, kami memutuskan untuk melangkah ke
+              jenjang yang lebih serius. Kami melangsungkan acara lamaran yang
+              mempertemukan kedua keluarga besar.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="t-date">April 2026</div>
+          <div class="t-content">
+            <h4>Menikah</h4>
+            <p>
+              Bukan karena bertemu lalu berjodoh, tapi karena berjodohlah kami
+              dipertemukan. Insya Allah, kami akan mengikrarkan janji suci
+              pernikahan pada April 2026.
+            </p>
           </div>
         </div>
       </div>
@@ -148,64 +179,88 @@
 
     <section class="event" data-aos="fade-up">
       <div class="event-card">
-        <h2 style="text-align: center; margin-bottom: 30px">Waktu & Tempat</h2>
+        <h2 class="event-title">Waktu & Tempat</h2>
 
-        <div class="event-item">
-          <h3>Akad Nikah</h3>
-          <p class="time">08.00 - 10.00 WIB</p>
-          <p class="location">
-            Masjid Agung Al-Barkah<br />Jl. Veteran No. 1, Bekasi
-          </p>
+        <div class="event-grid">
+          <div class="event-item">
+            <div class="event-header">
+              <div class="event-icon">💍</div>
+              <h3>Akad Nikah</h3>
+            </div>
+
+            <div class="calendar-display">
+              <div class="cal-top">Kamis</div>
+              <div class="cal-main">2</div>
+              <div class="cal-bottom">April 2026</div>
+            </div>
+
+            <div class="event-info">
+              <p class="time">09.00 WIB s/d Selesai</p>
+              <p class="location">
+                <span class="venue">Jl. Seruwai Kamboja Lk. I</span><br />
+                Sei Mati, Medan Labuhan.
+              </p>
+            </div>
+          </div>
+
+          <div class="divider-vertical"></div>
+
+          <div class="event-item">
+            <div class="event-header">
+              <div class="event-icon">🥂</div>
+              <h3>Resepsi</h3>
+            </div>
+
+            <div class="calendar-display">
+              <div class="cal-top">Sabtu</div>
+              <div class="cal-main">04</div>
+              <div class="cal-bottom">April 2026</div>
+            </div>
+
+            <div class="event-info">
+              <p class="time">10 WIB s/d Selesai</p>
+              <p class="location">
+                <span class="venue">Jl. Seruwai Kamboja Lk. I</span><br />
+                Sei Mati, Medan Labuhan.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <hr />
-
-        <div class="event-item">
-          <h3>Resepsi</h3>
-          <p class="time">11.00 - 13.00 WIB</p>
-          <p class="location">Grand Ballroom Hotel Aston<br />Bekasi</p>
-        </div>
-
-        <div style="text-align: center; margin-top: 25px">
+        <div class="calendar-wrapper">
           <button class="btn-calendar" onclick="addToCalendar()">
-            📅 Simpan ke Kalender
+            <i class="fas fa-calendar-alt"></i> Simpan ke Kalender
           </button>
         </div>
 
-        <hr style="margin: 40px 0" />
+        <div class="map-section">
+          <div class="map-title-wrapper">
+            <div class="line"></div>
+            <h3>Lokasi Acara</h3>
+            <div class="line"></div>
+          </div>
 
-        <h3 style="text-align: center; margin-bottom: 20px">Peta Lokasi</h3>
-        <div class="map-container">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.052671991484!2d106.99849541530235!3d-6.236986595484832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698c25797f1f0f%3A0x62ccb9f8ecde4bc4!2sMasjid%20Agung%20Al-Barkah%20Bekasi!5e0!3m2!1sid!2sid!4v1680000000000!5m2!1sid!2sid"
-            width="100%"
-            height="250"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          >
-          </iframe>
-        </div>
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!3m2!1sid!2sid!4v1773598512475!5m2!1sid!2sid!6m8!1m7!1suuIWVBMKB933QgEOpZTpcw!2m2!1d3.730739516499566!2d98.69719901737993!3f211.33725066044545!4f-16.06693191006086!5f0.7820865974627469"
+              width="600"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
 
-        <div class="route-buttons">
-          <a
-            href="https://www.google.com/maps/dir/?api=1&destination=Masjid+Agung+Al-Barkah+Bekasi"
-            target="_blank"
-            class="btn-route gmaps"
-          >
-            Buka Google Maps
-          </a>
-          <a
-            href="http://maps.apple.com/?q=Masjid+Agung+Al-Barkah+Bekasi"
-            target="_blank"
-            class="btn-route apple-maps"
-          >
-            Buka Apple Maps
-          </a>
-        </div>
-      </div>
-    </section>
+         <div class="route-buttons">
+  <a href="https://maps.app.goo.gl/A4HDZe3UjJ8rNAtw8" target="_blank" class="btn-route gmaps">
+    <i class="fab fa-google"></i> Google Maps
+  </a>
+
+  <a href="https://maps.apple.com/?address=Sei%20Mati,%20Medan,%20Sumatera%20Utara,%20Indonesia&auid=9572236583102418935&ll=3.730675,98.697289&lsp=7618&q=Sei%20Mati&t=m" target="_blank" class="btn-route apple-maps">
+    <i class="fab fa-apple"></i> Apple Maps
+  </a>
+</div>
 
     <section class="gallery">
       <div class="container">
@@ -218,7 +273,7 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="gallery-item">
-                <img src="images/wedding1.jpeg" alt="Moment 1" />
+                <img src="images/depan1.jpeg" alt="Moment 1" />
                 <div class="gallery-overlay">
                   <span>Magnificent Love</span>
                 </div>
@@ -226,7 +281,7 @@
             </div>
             <div class="swiper-slide">
               <div class="gallery-item">
-                <img src="images/wedding2.jpeg" alt="Moment 2" />
+                <img src="images/depan2.jpeg" alt="Moment 2" />
                 <div class="gallery-overlay">
                   <span>Eternal Soul</span>
                 </div>
@@ -234,7 +289,7 @@
             </div>
             <div class="swiper-slide">
               <div class="gallery-item">
-                <img src="images/wedding3.jpeg" alt="Moment 3" />
+                <img src="images/depan3.jpeg" alt="Moment 3" />
                 <div class="gallery-overlay">
                   <span>Pure Happiness</span>
                 </div>
@@ -242,7 +297,7 @@
             </div>
             <div class="swiper-slide">
               <div class="gallery-item">
-                <img src="images/wedding4.jpeg" alt="Moment 2" />
+                <img src="images/depan4.jpeg" alt="Moment 2" />
                 <div class="gallery-overlay">
                   <span>Eternal Soul</span>
                 </div>
@@ -251,7 +306,7 @@
 
             <div class="swiper-slide">
               <div class="gallery-item">
-                <img src="images/wedding5.jpeg" alt="Moment 2" />
+                <img src="images/depan5.jpeg" alt="Moment 2" />
                 <div class="gallery-overlay">
                   <span>Eternal Soul</span>
                 </div>
@@ -260,7 +315,7 @@
 
             <div class="swiper-slide">
               <div class="gallery-item">
-                <img src="images/wedding6.jpeg" alt="Moment 2" />
+                <img src="images/depan6.jpeg" alt="Moment 2" />
                 <div class="gallery-overlay">
                   <span>Eternal Soul</span>
                 </div>
@@ -275,76 +330,54 @@
     </section>
 
     <section class="couple-gallery">
-      <div class="container">
-        <h2 data-aos="fade-up">Potret Cinta Kami</h2>
-        <p data-aos="fade-up" data-aos-delay="100">
-          "Menua bersama adalah perjalanan terindah yang ingin aku lalui
-          bersamamu."
-        </p>
+  <div class="container">
+    <h2 data-aos="fade-up">Potret Cinta Kami</h2>
+    <p data-aos="fade-up" data-aos-delay="100">
+      "Menua bersama adalah perjalanan terindah yang ingin aku lalui bersamamu."
+    </p>
 
-        <div class="grid-gallery">
-          <div
-            class="grid-item item-1"
-            data-aos="fade-up"
-            data-aos-duration="1200"
-            data-aos-delay="100"
-          >
-            <img src="images/grid1.jpeg" alt="Prewedding 1" />
-            <div class="item-overlay"><span>Endless Love</span></div>
-          </div>
-
-          <div
-            class="grid-item item-2"
-            data-aos="fade-up"
-            data-aos-duration="1200"
-            data-aos-delay="200"
-          >
-            <img src="images/grid2.jpeg" alt="Prewedding 2" />
-            <div class="item-overlay"><span>Soulmate</span></div>
-          </div>
-
-          <div
-            class="grid-item item-3"
-            data-aos="fade-up"
-            data-aos-duration="1200"
-            data-aos-delay="300"
-          >
-            <img src="images/grid3.jpeg" alt="Prewedding 3" />
-            <div class="item-overlay"><span>Destiny</span></div>
-          </div>
-
-          <div
-            class="grid-item item-4"
-            data-aos="fade-up"
-            data-aos-duration="1200"
-            data-aos-delay="400"
-          >
-            <img src="images/grid4.jpeg" alt="Prewedding 4" />
-            <div class="item-overlay"><span>Together</span></div>
-          </div>
-
-          <div
-            class="grid-item item-5"
-            data-aos="fade-up"
-            data-aos-duration="1200"
-            data-aos-delay="500"
-          >
-            <img src="images/grid5.jpeg" alt="Prewedding 5" />
-            <div class="item-overlay"><span>Forever</span></div>
-          </div>
-
-          <div
-            class="grid-item item-6"
-            data-aos="fade-up"
-            data-aos-duration="1200"
-            data-aos-delay="600"
-          >
-            <img src="images/grid6.jpeg" alt="Prewedding 6" />
-            <div class="item-overlay"><span>Always</span></div>
-          </div>
-        </div>
+    <div class="grid-gallery">
+      <div class="grid-item item-1" data-aos="fade-up" data-aos-delay="100">
+        <img src="images/galeri1.jpeg" alt="Prewedding 1" />
+        <div class="item-overlay"><span>Endless Love</span></div>
       </div>
-    </section>
+
+      <div class="grid-item item-2" data-aos="fade-up" data-aos-delay="200">
+        <img src="images/galeri2.jpeg" alt="Prewedding 2" />
+        <div class="item-overlay"><span>Soulmate</span></div>
+      </div>
+
+      <div class="grid-item item-3" data-aos="fade-up" data-aos-delay="300">
+        <img src="images/galeri3.jpeg" alt="Prewedding 3" />
+        <div class="item-overlay"><span>Destiny</span></div>
+      </div>
+
+      <div class="grid-item item-4" data-aos="fade-up" data-aos-delay="400">
+        <img src="images/galeri4.jpeg" alt="Prewedding 4" />
+        <div class="item-overlay"><span>Together</span></div>
+      </div>
+
+      <div class="grid-item item-5" data-aos="fade-up" data-aos-delay="500">
+        <img src="images/galeri5.jpeg" alt="Prewedding 5" />
+        <div class="item-overlay"><span>Forever</span></div>
+      </div>
+
+      <div class="grid-item item-6" data-aos="fade-up" data-aos-delay="600">
+        <img src="images/galeri6.jpeg" alt="Prewedding 6" />
+        <div class="item-overlay"><span>Always</span></div>
+      </div>
+
+      <div class="grid-item item-7" data-aos="fade-up" data-aos-delay="700">
+        <img src="images/galeri7.jpeg" alt="Prewedding 7" />
+        <div class="item-overlay"><span>Here We Are</span></div>
+      </div>
+
+      <div class="grid-item item-8" data-aos="fade-up" data-aos-delay="800">
+        <img src="images/grid5.jpeg" alt="Prewedding 8" />
+        <div class="item-overlay"><span>We Made It</span></div>
+      </div>
+    </div> </div>
+</section>
 
     <section class="premium-gallery" data-aos="fade-up">
       <div class="container">
@@ -357,7 +390,7 @@
             data-aos="zoom-in"
             onclick="openLightbox(this)"
           >
-            <img src="images/grid1.jpeg" alt="Moment 1" />
+            <img src="images/galeri8.jpeg" alt="Moment 1" />
             <div class="hover-text">Perbesar</div>
           </div>
 
@@ -367,7 +400,7 @@
             data-aos-delay="100"
             onclick="openLightbox(this)"
           >
-            <img src="images/gambar6.jpeg" alt="Moment 2" />
+            <img src="images/galeri9.jpeg" alt="Moment 2" />
             <div class="hover-text">Perbesar</div>
           </div>
 
@@ -377,7 +410,7 @@
             data-aos-delay="200"
             onclick="openLightbox(this)"
           >
-            <img src="images/gambar5.jpeg" alt="Moment 3" />
+            <img src="images/galeri10.jpeg" alt="Moment 3" />
             <div class="hover-text">Perbesar</div>
           </div>
 
@@ -387,7 +420,7 @@
             data-aos-delay="300"
             onclick="openLightbox(this)"
           >
-            <img src="images/gambar4.jpeg" alt="Moment 4" />
+            <img src="images/galeri1.jpeg" alt="Moment 4" />
             <div class="hover-text">Perbesar</div>
           </div>
 
@@ -397,7 +430,7 @@
             data-aos-delay="400"
             onclick="openLightbox(this)"
           >
-            <img src="images/gambar3.jpeg" alt="Moment 5" />
+            <img src="images/galeri12.jpeg" alt="Moment 5" />
             <div class="hover-text">Perbesar</div>
           </div>
 
@@ -407,12 +440,41 @@
             data-aos-delay="500"
             onclick="openLightbox(this)"
           >
-            <img src="images/gambar2.jpeg" alt="Moment 6" />
+            <img src="images/galeri13.jpeg" alt="Moment 6" />
             <div class="hover-text">Perbesar</div>
           </div>
         </div>
       </div>
     </section>
+
+    <section class="engagement-section">
+  <div class="container">
+    <div class="engagement-header" data-aos="fade-up">
+      <span class="sub-title">The First Step to Forever</span>
+      <h2>Momen Lamaran</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="engagement-grid">
+      <div class="eng-item item-main" data-aos="zoom-in" data-aos-duration="1500">
+        <img src="images/lamaran1.jpeg" alt="Momen Lamaran Utama" />
+        <div class="eng-overlay">
+          <p>The Proposal</p>
+        </div>
+      </div>
+
+      <div class="eng-item item-small" data-aos="fade-left" data-aos-delay="200">
+        <img src="images/lamaran2.jpeg" alt="Detail Cincin" />
+        <div class="eng-overlay"><span>The Ring</span></div>
+      </div>
+
+      <div class="eng-item item-small" data-aos="fade-left" data-aos-delay="400">
+        <img src="images/lamaran3.jpeg" alt="Kebahagiaan" />
+        <div class="eng-overlay"><span>Pure Joy</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
       <span class="close-lightbox">&times;</span>

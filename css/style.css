@@ -322,63 +322,100 @@ h2 {
 /* --- TIMELINE STORY --- */
 .story {
   padding: 80px 20px;
-  background: white;
+  background: #fff;
+  text-align: center; /* Judul di tengah */
+  margin-bottom: 3rem;
+}
+
+.story h2 {
+  margin-bottom: 40px;
+  font-family: "Serif", sans-serif; /* Opsional: ganti sesuai font undanganmu */
 }
 
 .timeline {
   position: relative;
   max-width: 600px;
-  margin: 40px auto;
+  margin: 0 auto;
   border-left: 2px solid var(--gold);
   padding-left: 30px;
   text-align: left;
 }
 
 .timeline-item {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   position: relative;
 }
 
+/* Titik lingkaran di garis */
 .timeline-item::before {
   content: "";
   position: absolute;
-  left: -41px;
+  left: -41px; /* Menyesuaikan dengan padding-left timeline */
   top: 5px;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   background: var(--gold);
+  border: 3px solid white; /* Memberi efek ring */
   border-radius: 50%;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  z-index: 1;
 }
 
 .t-date {
   font-weight: bold;
   color: var(--gold);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.t-content h4 {
+  margin: 5px 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.t-content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #666;
 }
 
 /* --- EVENT CARD --- */
-.event {
-  padding: 100px 20px;
-  background: url("https://www.transparenttextures.com/patterns/cream-paper.png");
+section.event {
+  position: relative;
+  margin-bottom: 4rem;
 }
-
 .event-card {
   background: white;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 50px;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-  border: 1px solid #eee;
+  max-width: 850px;
+  margin: 1.5rem auto;
+  padding: 60px 40px;
+  border-radius: 30px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.07);
+  border: 1px solid rgba(179, 145, 62, 0.2);
+  position: relative;
+}
+
+.event-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+  color: var(--dark);
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.event-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 40px;
 }
 
 .event-item {
-  margin: 20px 0;
-}
-
-.event-item .time {
-  font-weight: bold;
-  margin: 10px 0;
+  flex: 1;
+  text-align: center;
 }
 
 .btn-map {
@@ -391,84 +428,160 @@ h2 {
   border-radius: 50px;
 }
 
+.route-buttons {
+  position: relative;
+  z-index: 10; /* Memastikan tombol tidak tertutup elemen lain */
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-route {
+  cursor: pointer; /* Memberikan indikasi tangan saat di-hover */
+  pointer-events: auto; /* Memastikan event klik terdeteksi */
+}
+/* --- DESAIN KALENDER --- */
+.calendar-display {
+  margin: 25px auto;
+  width: fit-content;
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  padding: 15px 30px;
+}
+
+.calendar-wrapper {
+  text-align: center; /* Ini akan memaksa elemen inline ke tengah */
+  width: 100%;
+  margin-top: 20px;
+}
+
+.cal-top {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.cal-main {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--dark);
+  margin: 5px 0;
+}
+
+.cal-bottom {
+  font-size: 1rem;
+  color: #666;
+  letter-spacing: 1px;
+}
+
+.event-header h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.event-info .time {
+  font-size: 1.1rem;
+  color: var(--dark);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.venue {
+  display: block;
+  font-size: 1.2rem;
+  color: var(--gold);
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+/* --- DIVIDER --- */
+.divider-vertical {
+  width: 1px;
+  height: 250px;
+  background: linear-gradient(transparent, var(--gold), transparent);
+  opacity: 0.5;
+}
+
 /* ========================================== */
 /* FITUR KALENDER & NAVIGASI PETA             */
 /* ========================================== */
+
+/* Pembungkus agar tombol otomatis ke tengah */
+.calendar-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+  width: 100%;
+}
+
 .btn-calendar {
-  background: var(--gold);
+  background: var(--gold, #d4af37);
   color: #fff;
   border: none;
-  padding: 12px 25px;
+  padding: 14px 28px; /* Sedikit diperlebar agar lebih premium */
   border-radius: 50px;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 15px rgba(212, 175, 55, 0.2);
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  text-decoration: none; /* Jika menggunakan tag <a> */
 }
 
 .btn-calendar:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(212, 175, 55, 0.4);
+  background: var(--dark-gold, #b3913e);
+}
+
+/* --- MAP SECTION --- */
+.map-section {
+  margin-top: 50px;
+  width: 100%;
+}
+
+.map-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.map-title-wrapper h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  color: var(--dark, #333);
+  white-space: nowrap;
+}
+
+.map-title-wrapper .line {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(to right, transparent, #ddd, transparent);
 }
 
 .map-container {
-  margin-bottom: 20px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 15px;
+  width: 100%;
+  border-radius: 20px;
   overflow: hidden;
-  border: 1px solid #eee;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  line-height: 0;
+  margin-bottom: 25px;
+  /* Menjaga rasio peta agar tidak gepeng */
+  aspect-ratio: 16 / 9;
 }
-
-.route-buttons {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.btn-route {
-  flex: 1;
-  min-width: 150px;
-  text-align: center;
-  padding: 12px 20px;
-  text-decoration: none;
-  border-radius: 50px;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  font-size: 0.85rem;
-  transition: all 0.3s ease;
-}
-
-/* Warna Khas Google Maps */
-.btn-route.gmaps {
-  background: #e8f0fe;
-  color: #1a73e8;
-  border: 1px solid #1a73e8;
-}
-
-.btn-route.gmaps:hover {
-  background: #1a73e8;
-  color: #fff;
-}
-
-/* Warna Khas Apple Maps (Minimalis khas Apple) */
-.btn-route.apple-maps {
-  background: #f5f5f7;
-  color: #1d1d1f;
-  border: 1px solid #d2d2d7;
-}
-
-.btn-route.apple-maps:hover {
-  background: #1d1d1f;
-  color: #fff;
-  border-color: #1d1d1f;
-}
-
 /* --- OUTRO --- */
 .outro {
   padding: 100px 20px;
@@ -594,10 +707,11 @@ h2 {
   font-size: 0.9rem;
 }
 
+/* Container Utama */
 .grid-gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 200px;
+  grid-auto-rows: 200px; /* Tinggi dasar satu baris */
   gap: 15px;
   max-width: 900px;
   margin: 0 auto;
@@ -670,30 +784,148 @@ h2 {
   transform: translateY(0);
 }
 
-/* --- FORMASI GRID 6 ITEM (DESKTOP) --- */
+/* FORMULA GRID 8 ITEM AGAR PADAT (3 KOLOM) */
 .item-1 {
   grid-column: span 2;
   grid-row: span 2;
-} /* Besar di kiri atas */
+} /* Besar 2x2 */
 .item-2 {
   grid-column: span 1;
-  grid-row: span 2;
-} /* Tinggi di kanan atas */
+  grid-row: span 1;
+}
 .item-3 {
   grid-column: span 1;
-  grid-row: span 2;
-} /* Tinggi di kiri bawah */
+  grid-row: span 1;
+}
 .item-4 {
   grid-column: span 1;
   grid-row: span 1;
-} /* Kecil di tengah bawah */
+} /* Tinggi vertikal */
 .item-5 {
-  grid-column: span 1;
+  grid-column: span 2;
   grid-row: span 1;
-} /* Kecil di kanan tengah */
+}
 .item-6 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.item-7 {
   grid-column: span 1;
   grid-row: span 1;
+}
+.item-8 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* --- ENGAGEMENT SECTION --- */
+.engagement-section {
+  padding: 120px 20px;
+  background-color: #fcfbf7; /* Warna off-white yang elegan */
+}
+
+.engagement-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.engagement-header .sub-title {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 0.8rem;
+  color: #a89166; /* Warna gold pucat */
+  display: block;
+  margin-bottom: 10px;
+}
+
+.engagement-header h2 {
+  font-size: 2.5rem;
+  font-family: "Playfair Display", serif;
+}
+
+.engagement-header .divider {
+  width: 50px;
+  height: 2px;
+  background: #a89166;
+  margin: 20px auto;
+}
+
+/* --- GRID SYSTEM --- */
+.engagement-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 250px);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.eng-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.eng-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Formasi Grid Bento */
+.item-main {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.item-small {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+.item-wide {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* --- OVERLAY MODERN --- */
+.eng-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.5s ease;
+  color: white;
+  text-align: center;
+}
+
+.eng-overlay span,
+.eng-overlay p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.eng-overlay h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+/* Hover Effect */
+.eng-item:hover img {
+  transform: scale(1.1);
+}
+
+.eng-item:hover .eng-overlay {
+  opacity: 1;
+  background: rgba(168, 145, 102, 0.7); /* Overlay gold transparan */
 }
 
 /* ========================================================================= */
@@ -705,7 +937,7 @@ h2 {
     grid-auto-rows: 150px;
   }
 
-  /* Formasi untuk layar HP agar tetap estetik & tidak ada lubang kosong */
+  /* Susunan ulang untuk 2 kolom agar tidak ada lubang */
   .item-1 {
     grid-column: span 2;
     grid-row: span 2;
@@ -719,8 +951,8 @@ h2 {
     grid-row: span 1;
   }
   .item-4 {
-    grid-column: span 1;
-    grid-row: span 2;
+    grid-column: span 2;
+    grid-row: span 1;
   }
   .item-5 {
     grid-column: span 1;
@@ -730,6 +962,51 @@ h2 {
     grid-column: span 1;
     grid-row: span 1;
   }
+  .item-7 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .item-8 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
+.engagement-header h2 {
+  font-size: 2rem;
+}
+
+.engagement-grid {
+  display: block; /* Matikan sistem grid kotak kaku */
+  columns: 3; /* Bagi menjadi 3 kolom (Desktop) */
+  column-gap: 15px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.item-main {
+  grid-column: span 2; /* Tetap lebar penuh di baris pertama */
+  height: 350px;
+}
+
+.item-small,
+.item-wide {
+  grid-column: span 1; /* Item lainnya berbagi 2 kolom */
+  height: 200px;
+}
+
+.eng-item {
+  display: inline-block; /* Penting agar item tidak terputus antar kolom */
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.eng-item img {
+  width: 100%;
+  height: auto; /* Tinggi otomatis mengikuti foto asli */
+  display: block;
 }
 /* Styling Kelopak Bunga */
 .petal {
@@ -1306,7 +1583,7 @@ textarea {
     margin: 20px 0;
   }
   .event-card {
-    padding: 30px 15px;
+    padding: 40px 20px;
   }
 
   /* --- GRID GALLERY MOBILE UNTUK 6 ITEM --- */
@@ -1357,6 +1634,38 @@ textarea {
   min-height: 500px;
   z-index: 1;
   padding: 50px 0;
+}
+
+.engagement-section {
+  padding: 60px 15px; /* Kurangi padding agar tidak terlalu makan ruang */
+}
+
+.engagement-header {
+  margin-bottom: 30px;
+}
+
+.engagement-header h2 {
+  font-size: 1.8rem;
+}
+
+.engagement-grid {
+  columns: 2; /* 2 Kolom di Tablet */
+}
+
+.item-main,
+.item-small,
+.item-wide {
+  grid-column: span 1 !important; /* Semua item ambil lebar penuh */
+  height: 280px; /* Tinggi yang nyaman untuk scrolling di HP */
+}
+
+.eng-overlay {
+  opacity: 1; /* Di HP, overlay sebaiknya muncul tanpa hover (karena tidak ada mouse) */
+  background: rgba(0, 0, 0, 0.2); /* Lebih tipis agar foto tetap terlihat */
+}
+
+.eng-overlay h3 {
+  font-size: 1.2rem;
 }
 
 /* Sakura Petals Animation */
@@ -1479,169 +1788,259 @@ textarea {
 .close-lightbox:hover {
   color: var(--gold, #b08d57);
 }
+/* Memaksa kontainer event menjadi satu kolom */
+.event-grid,
+.event-container {
+  display: flex;
+  flex-direction: column !important;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Menghilangkan garis vertikal di mobile */
+.divider-vertical,
+.event-divider {
+  display: none !important;
+}
+
+/* Jika menggunakan ampersand (&) sebagai pemisah, putar atau beri jarak */
+.event-divider-mobile {
+  display: block;
+  font-size: 2rem;
+  margin: 10px 0;
+  color: var(--gold);
+}
+
+/* Lebar kartu event agar penuh namun tetap manis */
+.event-card {
+  width: 100% !important;
+  padding: 40px 20px !important;
+  margin: 0 auto;
+  border-radius: 30px 5px 30px 5px; /* Sesuaikan desain asimetris */
+}
+
+.event-item,
+.event-box {
+  width: 100% !important;
+  flex: none !important;
+}
+
+/* Peta lokasi agar tidak terlalu tinggi di HP */
+.map-frame iframe,
+.map-container iframe {
+  height: 200px !important;
+}
 
 /* ========================================================================= */
 /* --- RESPONSIVE MOBILE (MAX-WIDTH: 600px) --- */
 /* ========================================================================= */
 @media (max-width: 600px) {
+  /* --- Global & Overlay --- */
   .overlay-content {
     position: relative;
     z-index: 10;
-    padding: 3rem;
-    line-height: 2rem;
+    padding: 2rem;
+    line-height: 1.8rem;
   }
-  .overlay-content h1 {
-    margin-top: 0.8rem;
-  }
+
   .wayang {
-    width: 200px;
+    width: 150px;
   }
   .wayang-left {
-    left: -40px;
+    left: -30px;
   }
   .wayang-right {
-    right: -40px;
+    right: -30px;
   }
 
+  /* --- Hero Section --- */
   .hero {
-    padding: 20px 10px;
+    padding: 40px 15px;
     height: auto;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .hero h1 {
-    font-size: 3rem !important;
+    font-size: 2.8rem !important;
   }
 
+  /* --- Timer / Countdown --- */
   #timer {
+    display: flex !important;
     gap: 8px;
     width: 100%;
     justify-content: center;
+    padding: 0 5px;
+  }
+
+  /* --- Event & Typography --- */
+  .section-title {
+    font-size: 1.8rem !important;
+    margin-bottom: 25px !important;
+    text-align: center;
+  }
+
+  /* --- Perbaikan Kotak Kalender --- */
+  .calendar-box,
+  .calendar-display {
+    width: 110px !important;
+    height: auto !important;
+    margin: 0 auto 15px !important;
+    display: block !important;
+  }
+
+  .cal-main {
+    font-size: 2.2rem !important;
+    line-height: 1.2;
+  }
+
+  /* --- Perbaikan Tombol & Navigasi --- */
+  .route-buttons,
+  .map-links,
+  .action-buttons {
+    display: flex !important;
+    flex-direction: column !important; /* Tombol bertumpuk di HP */
+    align-items: center;
+    gap: 12px !important;
+    width: 100% !important;
     padding: 0 10px;
   }
-  .t-box {
-    min-width: 65px;
-    padding: 10px 5px;
-    flex: 1;
-    max-width: 80px;
+
+  .btn-route {
+    width: 100% !important;
+    max-width: none !important;
+    flex: none;
   }
 
-  .couple {
-    padding: 60px 15px;
-  }
-  .couple-flex {
-    gap: 20px;
+  .map-container {
+    aspect-ratio: 4 / 3;
+    width: 100% !important;
   }
 
+  /* --- Story & Timeline --- */
   .timeline {
-    margin: 40px 15px 40px 35px;
+    margin: 30px 10px 30px 30px;
     padding-left: 15px;
   }
 
-  .swiper-slide {
-    width: 260px;
-    height: 380px;
-  }
-
+  /* --- Gift & Bank Card --- */
   .gift-container {
     width: 100%;
-    padding: 0 15px;
-    align-items: center;
+    padding: 0 10px;
   }
   .atm-card {
     width: 100%;
-    max-width: 320px;
-    height: 190px;
-    margin: 0 auto;
+    max-width: 300px;
+    height: 180px;
   }
   .rek-num {
-    font-size: 1.1rem;
-    letter-spacing: 2px;
-    font-family: "Courier New", Courier, monospace;
-    font-weight: bold;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
+    letter-spacing: 1px;
   }
 
-  /* Animasi Berjalan Tanpa Henti */
-  @keyframes scrollWishes {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
+  /* --- Gallery & Wishes --- */
+  .masonry-grid {
+    column-count: 2;
+    column-gap: 8px;
   }
 
-  /* Responsif untuk HP */
-  @media (max-width: 768px) {
-    .masonry-grid {
-      column-count: 2; /* Di HP jadi 2 kolom agar tidak terlalu kecil */
-      column-gap: 10px;
-    }
+  /* --- Form & Input --- */
+  .rsvp form {
+    padding: 0;
   }
-
-  /* Desain Lightbox (Pop-up Zoom) */
-  .lightbox {
-    display: none;
-    position: fixed;
-    z-index: 99999;
-    padding-top: 80px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .lightbox.show {
-    display: block;
-    opacity: 1;
-  }
-
-  .lightbox-content {
-    margin: auto;
-    display: block;
-    max-width: 90%;
-    max-height: 80vh;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    transform: scale(0.8);
-    transition: transform 0.3s ease;
-  }
-
-  .lightbox.show .lightbox-content {
-    transform: scale(1);
-  }
-
-  .close-lightbox {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 45px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  .close-lightbox:hover {
-    color: #d4af37; /* Warna emas saat diarahkan kursor */
-  }
-
-  .event-card,
-  .rsvp,
-  form {
-    width: 100%;
-    padding: 30px 15px;
-    margin: 0 auto;
-  }
-
   input,
   select,
   textarea {
-    width: 100%;
-    margin: 0 auto;
+    font-size: 16px;
   }
+} /* <--- PENUTUP MEDIA QUERY DI SINI */
+
+/* ========================================================================= */
+/* --- GLOBAL STYLES (Berlaku di Desktop & Mobile) --- */
+/* ========================================================================= */
+
+.map-container iframe {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  border: 0;
+}
+
+.route-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btn-route {
+  flex: 1;
+  max-width: 200px;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  border-radius: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-route.gmaps {
+  background: #fff;
+  color: #1a73e8;
+  border: 1.5px solid #1a73e8;
+}
+
+.btn-route.gmaps:hover {
+  background: #1a73e8;
+  color: #fff;
+}
+
+.btn-route.apple-maps {
+  background: #fff;
+  color: #1d1d1f;
+  border: 1.5px solid #1d1d1f;
+}
+
+.btn-route.apple-maps:hover {
+  background: #1d1d1f;
+  color: #fff;
+}
+
+/* --- LIGHTBOX --- */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.lightbox.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.lightbox-content {
+  max-width: 95%;
+  max-height: 75vh;
+  object-fit: contain;
+}
+.engagement-grid {
+  columns: 1; /* 1 Kolom di HP */
 }
