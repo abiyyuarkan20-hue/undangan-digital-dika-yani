@@ -593,3 +593,41 @@ function createSakuraPetals() {
 window.addEventListener("load", () => {
   createSakuraPetals();
 });
+function openLightbox(element) {
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const img = element.querySelector("img");
+
+  if (img) {
+    // 1. Masukkan sumber gambar
+    lightboxImg.src = img.src;
+
+    // 2. Aktifkan display flex terlebih dahulu
+    lightbox.style.display = "flex";
+
+    // 3. Beri sedikit jeda (10ms) agar browser menyadari perubahan display,
+    // baru kemudian tambahkan class 'active' untuk memicu transisi opacity & scale
+    setTimeout(() => {
+      lightbox.classList.add("active");
+    }, 10);
+
+    // 4. Kunci scroll body agar tidak bergeser saat melihat foto
+    document.body.style.overflow = "hidden";
+  }
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById("lightbox");
+
+  // 1. Lepas class active (memulai animasi pudar)
+  lightbox.classList.remove("active");
+
+  // 2. Tunggu animasi selesai (300ms) baru hilangkan display-nya
+  setTimeout(() => {
+    lightbox.style.display = "none";
+    document.getElementById("lightbox-img").src = ""; // Bersihkan gambar dari memori
+  }, 300);
+
+  // 3. Kembalikan scroll body
+  document.body.style.overflow = "auto";
+}

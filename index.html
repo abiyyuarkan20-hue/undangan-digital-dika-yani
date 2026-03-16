@@ -393,7 +393,7 @@
             onclick="openLightbox(this)"
           >
             <img src="images/galeri9.jpeg" alt="Moment 2" />
-            <div class="hover-text">Perbesar</div>
+             <div class="hover-text">Perbesar</div>
           </div>
 
           <div
@@ -467,11 +467,6 @@
     </div>
   </div>
 </section>
-
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-      <span class="close-lightbox">&times;</span>
-      <img class="lightbox-content" id="lightbox-img" alt="Lightbox Image" />
-    </div>
 
     <section class="gift">
       <h2 data-aos="fade-up">Kado Digital</h2>
@@ -581,5 +576,9 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-database-compat.js"></script>
 
     <script src="script/script.js"></script>
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <span class="close-btn">&times;</span>
+  <img class="lightbox-content" id="lightbox-img" src="" alt="Gallery Preview" />
+</div>
   </body>
 </html>
